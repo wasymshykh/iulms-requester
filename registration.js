@@ -2,6 +2,7 @@ const rp = require("request-promise");
 const cheerio = require("cheerio");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
+const chalk = require("chalk");
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ const sic =
     "http://iulms.edu.pk/registration/Registration_FEST_student_EarlyRegistration.php";
 
 const send_request = async url => {
-    console.log("Sending Request...");
+    console.log(chalk.white.bgBlue(" Sending Request... "));
 
     let html = await rp(url, {
         headers: {
@@ -54,7 +55,6 @@ const re_request = setInterval(() => {
             const $ = cheerio.load(res);
 
             let form = $("form").find("table");
-
             if (!form) {
                 console.log("Invalid MOODLE_SESSION OR MOODLE_SESSION_TEST");
             }
@@ -110,9 +110,13 @@ const re_request = setInterval(() => {
                 form = form.next();
             }
 
+            let available_to_print =
+                chalk.white.bgGreen(" Currently Available") + ": ";
             let result = available.find(course => {
+                available_to_print += chalk.green(course.name) + ", ";
                 return wantCourse.includes(course.name);
             });
+            console.log(available_to_print + "\n");
 
             if (result) {
                 // Sending email!
@@ -145,9 +149,9 @@ const re_request = setInterval(() => {
                         config.sender_email +
                         ">",
                     to: config.receiver_email,
-                    subject: 'Course "' + result.name + '" Khul Gya!',
-                    text: "Jaldi sy iulms check kro jani",
-                    html: "<p>Jaldi sy iulms check kro jani</p>"
+                    subject: 'Course "' + result.name + '" Open!',
+                    text: "Check IULMS...",
+                    html: "<p>Check IULMS...</p>"
                 };
 
                 transporter.sendMail(message, (err, info) => {
@@ -160,9 +164,10 @@ const re_request = setInterval(() => {
                     } else {
                         wantCourse.pop(result.name);
                         console.log(
-                            'Course "' +
-                                result.name +
-                                '" is available, register now!'
+                            chalk.white.bgRed(" Available Now ") +
+                                ": " +
+                                chalk.red(result.name) +
+                                " register now!\n"
                         );
                     }
                 });
@@ -171,4 +176,4 @@ const re_request = setInterval(() => {
         .catch(err => {
             console.error("Couldn't reach iulms");
         });
-}, 90000);
+}, 10000);
