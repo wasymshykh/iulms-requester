@@ -6,7 +6,15 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Array with list of courses you want check if they are available
-const wantCourse = ["SOFTWARE PROJECT MANAGEMENT", "SOFTWARE CONSTRUCTION"];
+const wantCourse = [
+    "SOFTWARE PROJECT MANAGEMENT",
+    "COMMUNICATION SKILLS",
+    "DISCRETE STRUCTURE",
+    "WEB PROGRAMMING LANGUAGES",
+    "SOFTWARE DESIGN & ARCHITECTURE",
+    "MOBILE APPLICATION & DEVELOPMENT",
+    "TECHNOPRENEURSHIP"
+];
 
 // Change to your data
 const config = {
@@ -161,8 +169,6 @@ const re_request = setInterval(() => {
             }
         })
         .catch(err => {
-            clearInterval(re_request);
-            console.error(err);
-            process.exit();
+            console.error("Couldn't reach iulms");
         });
 }, 90000);
