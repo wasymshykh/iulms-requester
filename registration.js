@@ -156,10 +156,11 @@ const re_request = setInterval(() => {
 
                 transporter.sendMail(message, (err, info) => {
                     if (err) {
-                        console.error(
-                            "Couldn't send email, btw, course \"" +
-                                result.name +
-                                '" is available'
+                        console.log(
+                            chalk.white.bgOrange(" Available Now ") +
+                                ": " +
+                                chalk.orange(result.name) +
+                                ", couldn't send email but register now!\n"
                         );
                     } else {
                         wantCourse.pop(result.name);
@@ -176,4 +177,4 @@ const re_request = setInterval(() => {
         .catch(err => {
             console.error("Couldn't reach iulms");
         });
-}, 10000);
+}, 90000);
