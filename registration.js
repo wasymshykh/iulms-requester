@@ -55,8 +55,10 @@ const re_request = setInterval(() => {
             const $ = cheerio.load(res);
 
             let form = $("form").find("table");
-            if (!form) {
+            if (form.length < 1) {
                 console.log("Invalid MOODLE_SESSION OR MOODLE_SESSION_TEST");
+                clearInterval(re_request);
+                process.exit();
             }
 
             const available = [];
