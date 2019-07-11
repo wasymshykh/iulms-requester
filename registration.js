@@ -47,7 +47,7 @@ const send_request = async url => {
     return html;
 };
 
-console.log("Started watching, waiting for interval to send request...");
+console.log("Started 🚀, waiting for interval to send request...");
 
 const re_request = setInterval(() => {
     send_request(sic)
@@ -125,7 +125,7 @@ const re_request = setInterval(() => {
 
                 const transporter = nodemailer.createTransport({
                     host: process.env.SMTP_AUTH_HOST,
-                    port: 587,
+                    port: process.env.SMTP_AUTH_PORT,
                     secure: false,
                     auth: {
                         user: process.env.SMTP_AUTH_USER,
