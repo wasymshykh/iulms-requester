@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const chalk = require("chalk");
 
-dotenv.config();
+dotenv.config({ path: __dirname + "/.env" });
 
 // Array with list of courses you want check if they are available
 const wantCourse = [
@@ -39,6 +39,7 @@ const send_request = async url => {
                 process.env.MOODLE_SESSION_TEST +
                 "; MOODLEID_=%25B0%259AG%2519%25E5",
             Host: "iulms.edu.pk",
+            Referer: "http://iulms.edu.pk/sic/sic.php",
             "User-Agent":
                 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
         }
