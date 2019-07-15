@@ -1,19 +1,20 @@
 {
-  "name": "iulms-requester",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "cheerio": "^1.0.0-rc.3",
-    "dotenv": "^8.0.0",
-    "nodemailer": "^6.2.1",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
-  }
+    "name": "iulms-requester",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon test/request.test.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "cheerio": "^1.0.0-rc.3",
+        "dotenv": "^8.0.0",
+        "nodemailer": "^6.2.1",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4"
+    }
 }
