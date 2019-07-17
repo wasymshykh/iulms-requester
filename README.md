@@ -1,15 +1,25 @@
 # iulms-requester
 
-Make .env file in the directory with following data
+_Project is currently unstable and under-contruction._
 
-> MOODLE_SESSION =
-> MOODLE_SESSION_TEST =
-> SMTP_AUTH_USER =
-> SMTP_AUTH_PASS =
-> SMTP_AUTH_HOST =
+### Todos
 
-### Get MOODLE_SESSION Data
-
-go to iulms.edu.pk, login to your account, see website cookies.
-
-setup any smtp server, shared hosting will work too.
+-   [x] Initial request testing (_spaghetti code_)
+-   [.] Converting project code into modular form
+-   [x] Project file structure change
+-   [ ] System improvements
+    -   [ ] replacing set_interval
+    -   [ ] reducing amount of process
+    -   [ ] optimizing code (ongoing)
+-   [ ] Backend api for responding to requests
+    -   [ ] limiting requests
+    -   [ ] limiting access
+    -   [ ] jwt based api
+-   [ ] Frontend user inferface
+    -   [ ] Login screen
+    -   [ ] Courses screen
+    -   [ ] Apply for notification screen
+        -   [ ] Desktop notification
+        -   [ ] Email notification
+        -   [ ] Sms notification
+    -   [ ] Auto course selection on availability
