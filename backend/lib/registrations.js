@@ -61,7 +61,50 @@ const tables_finder = (content, selector, finder) => {
     }
 */
 
+const is_valid_cookies = cookies => {
+    if (cookies === undefined) {
+        return {
+            success: false,
+            message: "Pass cookies to function"
+        };
+    }
+    if (cookies._ga === undefined) {
+        return {
+            success: false,
+            message: "Cookie object does not contain '_ga' property."
+        };
+    }
+    if (cookies.moodleSession === undefined) {
+        return {
+            success: false,
+            message: "Cookie object does not contain 'moodleSession' property."
+        };
+    }
+    if (cookies.moodleSessionTest === undefined) {
+        return {
+            success: false,
+            message:
+                "Cookie object does not contain 'moodleSessionTest' property."
+        };
+    }
+    if (cookies.moodleID_ === undefined) {
+        return {
+            success: false,
+            message: "Cookie object does not contain 'moodleID_' property."
+        };
+    }
+    return { success: true };
+};
+
 const getCourses = async cookies => {
+    const valid_cookies = is_valid_cookies(cookies);
+    if (!valid_cookies.success) {
+        return Promise.reject({
+            success: false,
+            message: valid_cookies.message
+        });
+    }
+
     content = await reg_request(cookies);
 
     if (!content.success) {
