@@ -19,6 +19,7 @@ _Project is currently unstable and under-contruction._
     -   [ ] React based frontend
     -   [ ] Login screen
     -   [ ] Courses screen
+    -   [ ] Selected courses week busy-ness view
     -   [ ] Apply for notification screen
         -   [ ] Desktop notification
         -   [ ] Email notification
